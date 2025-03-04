@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/logo2.png";
 import Search from "./Search";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
 import { LiaShoppingCartSolid } from "react-icons/lia";
+import { useSelector } from "react-redux";
+import { FaAngleUp, FaAngleDown } from "react-icons/fa6";
 
 const Header = () => {
+  const user = useSelector((state) => state?.user);
+  const [openUserMenu,setOpenUserMenu] = useState(false)
 
-    
+
+
+
   return (
     <header className="h-28 lg:h-30 lg:shadow-md sticky top-0 flex flex-col justify-center gap-1 bg-white">
       <div className="container mx-auto flex items-center px-2 justify-between">
@@ -37,26 +43,51 @@ const Header = () => {
         </div>
         {/*login and cart*/}
         <div className="">
-            <button className="text-neutral-700 lg:hidden">
-                <FaCircleUser size={25}/>
-            </button>
+          <button className="text-neutral-700 lg:hidden">
+            <FaCircleUser size={25} />
+          </button>
 
-            {/*desktop*/}
-            <div className="hidden lg:flex items-center gap-10">
-                <Link to={"/login"} className="text-lg px-2">Login</Link>
-                <button className="flex items-center gap-2 bg-green-600 hover:bg-green-800 px-3 py-3 rounded text-neutral-50">
-                    <div>
-                        <LiaShoppingCartSolid size={28}/>
+          {/*desktop*/}
+          <div className="hidden lg:flex items-center gap-10">
+            {user?._id ? (
+              <div className="relative">
+                <div
+                  onClick={() => setOpenUserMenu((preve) => !preve)}
+                  className="flex select-none items-center gap-1 cursor-pointer"
+                >
+                  <p>Cuenta</p>
+                  {openUserMenu ? (
+                    <FaAngleUp size={25} />
+                  ) : (
+                    <FaAngleDown size={25} />
+                  )}
+                </div>
+                {openUserMenu && (
+                  <div className="absolute right-0 top-12">
+                    <div className="bg-white rounded p-4 min-w-52 lg:shadow-lg">
+                      <UserMenu close={handleCloseUserMenu} />
                     </div>
-                    <div className="font-semibold">
-                        <p>Carrito</p>
-                    </div>
-                </button>
-            </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link to={"/login"} className="text-lg px-2">
+                Login
+              </Link>
+            )}
+            <button className="flex items-center gap-2 bg-green-600 hover:bg-green-800 px-3 py-3 rounded text-neutral-50">
+              <div>
+                <LiaShoppingCartSolid size={28} />
+              </div>
+              <div className="font-semibold">
+                <p>Carrito</p>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
       <div className="container mx-auto px-2 lg:hidden">
-        <Search/>
+        <Search />
       </div>
     </header>
   );

@@ -12,4 +12,4 @@ const fetchUserDetails = async()=>{
     }
 }
 
-export default fetchUserDetails
+export default fetchUserDetails;
