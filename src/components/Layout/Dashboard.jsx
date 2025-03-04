@@ -12,7 +12,7 @@ const Dashboard = () => {
         </div>
 
         {/* Contenido Derecho */}
-        <div className="bg-white min-h-[75vh] p-4">
+        <div className="bg-white min-h-[80vh] p-4">
           <Outlet />
         </div>
       </div>
