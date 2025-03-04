@@ -67,9 +67,9 @@ const UserMenu = ({ close }) => {
           <Link
             onClick={handleClose}
             to={"/dashboard/category"}
-            className="px-2 hover:bg-orange-200 py-1"
+            className="px-2 hover:bg-green-300 py-1"
           >
-            Categorias
+            Categorías
           </Link>
         )}
 
@@ -77,9 +77,9 @@ const UserMenu = ({ close }) => {
           <Link
             onClick={handleClose}
             to={"/dashboard/subcategory"}
-            className="px-2 hover:bg-orange-200 py-1"
+            className="px-2 hover:bg-green-200 py-1"
           >
-            Sub Categorias
+            Sub Categorías
           </Link>
         )}
 
@@ -87,7 +87,7 @@ const UserMenu = ({ close }) => {
           <Link
             onClick={handleClose}
             to={"/dashboard/upload-product"}
-            className="px-2 hover:bg-orange-200 py-1"
+            className="px-2 hover:bg-green-200 py-1"
           >
             Cargar Producto
           </Link>
@@ -97,7 +97,7 @@ const UserMenu = ({ close }) => {
           <Link
             onClick={handleClose}
             to={"/dashboard/product"}
-            className="px-2 hover:bg-orange-200 py-1"
+            className="px-2 hover:bg-green-200 py-1"
           >
             Productos
           </Link>
@@ -106,7 +106,7 @@ const UserMenu = ({ close }) => {
         <Link
           onClick={handleClose}
           to={"/dashboard/myorders"}
-          className="px-2 hover:bg-orange-200 py-1"
+          className="px-2 hover:bg-green-100 py-1"
         >
           Mis pedidos
         </Link>
@@ -114,14 +114,14 @@ const UserMenu = ({ close }) => {
         <Link
           onClick={handleClose}
           to={"/dashboard/address"}
-          className="px-2 hover:bg-orange-200 py-1"
+          className="px-2 hover:bg-green-100 py-1"
         >
           Guardar dirección
         </Link>
 
         <button
           onClick={handleLogout}
-          className="text-left px-2 hover:bg-orange-200 py-1"
+          className="text-left px-2 hover:bg-green-100 py-1"
         >
           Cerrar sesión
         </button>
