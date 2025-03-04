@@ -8,7 +8,7 @@ import { logout } from "../../store/userSlice";
 import toast from "react-hot-toast";
 import AxiosToastError from "../../utils/AxiosToastError";
 import { HiOutlineExternalLink } from "react-icons/hi";
-import isAdmin from "../utils/isAdmin";
+import isAdmin from "../../utils/isAdmin";
 
 const UserMenu = ({ close }) => {
   const user = useSelector((state) => state.user);

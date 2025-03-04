@@ -5,11 +5,14 @@ import "./index.css";
 import router from "./route/route";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import { GlobalProvider } from "./provider/GlobalProvider";
 
 createRoot(document.getElementById("root")).render(
   //<StrictMode>
   <Provider store={store}>
-    <RouterProvider router={router} future={{ v7_relativeSplatPath: true }} />
+    <GlobalProvider>
+      <RouterProvider router={router} future={{ v7_relativeSplatPath: true }} />
+    </GlobalProvider>
   </Provider>
   //</StrictMode>,
 );
