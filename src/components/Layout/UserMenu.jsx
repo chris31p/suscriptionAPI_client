@@ -7,7 +7,7 @@ import SummaryApi from "../../common/SummaryApi";
 import { logout } from "../../store/userSlice";
 import toast from "react-hot-toast";
 import AxiosToastError from "../../utils/AxiosToastError";
-import { HiOutlineExternalLink } from "react-icons/hi";
+import { RxExternalLink } from "react-icons/rx";
 import isAdmin from "../../utils/isAdmin";
 
 const UserMenu = ({ close }) => {
@@ -56,7 +56,7 @@ const UserMenu = ({ close }) => {
           to={"/dashboard/profile"}
           className="hover:text-primary-200"
         >
-          <HiOutlineExternalLink size={15} />
+          <RxExternalLink size={15} />
         </Link>
       </div>
 

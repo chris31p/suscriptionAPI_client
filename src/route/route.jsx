@@ -6,6 +6,10 @@ import Register from '../components/Auth/Register';
 import ForgotPsw from '../pages/ForgotPsw';
 import OtpVerificate from '../pages/OtpVerificate';
 import ResetPsw from '../pages/ResetPsw';
+import Dashboard from '../components/Layout/Dashboard';
+import Profile from '../pages/Profile';
+import MyOrders from '../pages/MyOrders';
+import Address from '../pages/Address';
 
 const router = createBrowserRouter([
     {
@@ -35,6 +39,24 @@ const router = createBrowserRouter([
             {
                 path: 'reset-password',
                 element: <ResetPsw/>
+            },
+            {
+                path: 'dashboard',
+                element: <Dashboard/>,
+                children: [
+                    {
+                        path: 'profile',
+                        element: <Profile/>
+                    },
+                    {
+                        path: 'myorders',
+                        element: <MyOrders/>
+                    },
+                    {
+                        path: 'address',
+                        element: <Address/>
+                    }
+                ]
             }
         ]
     }
