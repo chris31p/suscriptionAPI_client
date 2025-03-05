@@ -4,11 +4,20 @@ import Loading from "../components/Layout/Loading";
 import NoData from "../components/Layout/NoData";
 import Axios from "../utils/Axios";
 import SummaryApi from "../common/SummaryApi";
+import { AiTwotoneDelete } from "react-icons/ai";
+import { BiMessageSquareEdit } from "react-icons/bi";
+import EditCategory from "../components/Category/EditCategory.jsx";
+
 
 const CategoryPage = () => {
   const [openUploadCategory, setOpenUploadCategory] = useState(false);
   const [loading, setLoading] = useState(false);
   const [dataCategory, setDataCategory] = useState([]);
+  const [openEdit, setOpenEdit] = useState(false);
+  const [editData, setEditData] = useState({
+    name: "",
+    image: ""
+  })
 
   const fetchCategory = async () => {
     try {
@@ -43,7 +52,7 @@ const CategoryPage = () => {
         <h2 className="font-semibold">Categorías</h2>
         <button
           onClick={handleOpenUploadCategory}
-          className="text-sm border bg-green-400 px-3 py-1 rounded"
+          className="text-sm border bg-orange-300 hover:bg-orange-500 px-3 py-1 rounded font-semibold"
         >
           Añadir categoría
         </button>
@@ -54,19 +63,27 @@ const CategoryPage = () => {
             <NoData />
             )
             }
-      <div className="p-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+      <div className="p-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
       {dataCategory.map((category, index) => {
         return (
-          <div className="w-36 h-48 rounded shadow-md ">
+          <div key={index} className="w-full max-w-[150px] md:max-w-[180px] lg:max-w-[200px] group rounded bg-slate-50 shadow-sm overflow-hidden flex flex-col items-center">
             <img
               alt={category.name}
               src={category.image}
-              className="w-full object-scale-down"
+              className="w-full h-32 object-cover"
             />
             <p className="font-semibold text-center my-2">
                 {category.name}
-            </p>
+            </p>  
+            <div className="items-center h-9 hidden group-hover:flex gap-3">
+            <button onClick={()=>{
+              setOpenEdit(true)
+              setEditData(category)
+            }} className="flex-1"><BiMessageSquareEdit size={22}/></button>
+              <button className="flex-1"><AiTwotoneDelete size={24}/></button>
+            </div>          
           </div>
+          
         );
       })}
       </div>
@@ -74,6 +91,11 @@ const CategoryPage = () => {
       {openUploadCategory && (
         <UploadCategory fetchData={fetchCategory} close={() => setOpenUploadCategory(false)} />
       )}
+      {
+        openEdit && (
+          <EditCategory data={editData} close={()=>setOpenEdit(false)} fetchData={fetchCategory}/>
+        )
+      }
     </section>
   );
 };
