@@ -8,7 +8,7 @@ const initialValue = {
 }
 
 const productSlice = createSlice({
-    name : 'product',
+    name : 'Product',
     initialState : initialValue,
     reducers : {
         setAllCategory : (state,action)=>{

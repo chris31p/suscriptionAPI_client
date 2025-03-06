@@ -12,7 +12,7 @@ import MyOrders from '../pages/MyOrders';
 import Address from '../pages/Address';
 import CategoryPage from '../pages/CategoryPage';
 import SubCategory from '../pages/SubCategory';
-import UploadProduct from '../pages/UploadProduct';
+import UploadProduct from '../components/Product/UploadProduct';
 import ProductAdmin from '../pages/ProductAdmin';
 
 const router = createBrowserRouter([
