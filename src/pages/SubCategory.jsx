@@ -131,7 +131,7 @@ const handleDeleteSubCategory = async()=>{
   return (
     <section className=''>
         <div className='p-2   bg-white shadow-md flex items-center justify-between'>
-            <h2 className='font-semibold'>Sub Categoría</h2>
+            <h2 className='font-semibold'>SUB CATEGORIAS</h2>
             <button onClick={()=>setOpenSubCategory(true)} className='text-sm border bg-orange-300 hover:bg-orange-500 px-3 py-1 rounded font-semibold'>Agregar Subcategoría</button>
         </div>
 

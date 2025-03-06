@@ -111,14 +111,14 @@ const UploadProduct = () => {
     console.log("data", data);
 
     try {
-      const response = await Axios({
+      const res = await Axios({
         ...SummaryApi.createProduct,
         data: data,
       });
-      const { data: responseData } = response;
+      const { data: resData } = res;
 
-      if (responseData.success) {
-        successAlert(responseData.msg);
+      if (resData.success) {
+        successAlert(resData.msg);
         setData({
           name: "",
           image: [],
@@ -143,7 +143,7 @@ const UploadProduct = () => {
   return (
     <section className="">
       <div className="p-2   bg-white shadow-md flex items-center justify-between">
-        <h2 className="font-semibold">Actualizar productos</h2>
+        <h2 className="font-semibold">CARGAR PRODUCTOS</h2>
       </div>
       <div className="grid p-3">
         <form className="grid gap-4" onSubmit={handleSubmit}>
@@ -254,7 +254,7 @@ const UploadProduct = () => {
                 </option>
                 {allCategory.map((c, index) => {
                   return (<option value={c?._id}>{c.name}</option>
-                )})}
+                )})} 
               </select>
               <div className="flex flex-wrap gap-3">
                 {data.category.map((c, index) => {

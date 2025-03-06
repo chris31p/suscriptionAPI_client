@@ -10,7 +10,6 @@ import EditCategory from "../components/Category/EditCategory.jsx";
 import ConfirmBox from "../components/Layout/ConfirmBox.jsx";
 import toast from "react-hot-toast";
 import AxiosToastError from "../utils/AxiosToastError.js";
-import { useSelector } from "react-redux";
 
 
 const CategoryPage = () => {
@@ -27,8 +26,6 @@ const CategoryPage = () => {
     _id: ""
   })
 
-  const allCategory = useSelector(state=> state.product.allCategory)
-  
   const fetchCategory = async () => {
     try {
       setLoading(true);
@@ -76,7 +73,7 @@ const CategoryPage = () => {
   return (
     <section>
       <div className="p-2 bg-white shadow-md flex items-center justify-between">
-        <h2 className="font-semibold">Categorías</h2>
+        <h2 className="font-semibold">CATEGORIAS</h2>
         <button
           onClick={handleOpenUploadCategory}
           className="text-sm border bg-orange-300 hover:bg-orange-500 px-3 py-1 rounded font-semibold"
