@@ -93,7 +93,7 @@ const EditCategory = ({ close, fetchData, data: dataCategory }) => {
           </div>
           <div className="grid gap-1">
             <p>Imagen</p>
-            <div className="flex gap-4 flex-col lg:flex-row items-center">
+            <div className="flex flex-col lg:flex-row items-center gap-3">
               <div className="border bg-blue-50 h-36 w-full lg:w-36 flex items-center justify-center rounded">
                 {data.image ? (
                   <img

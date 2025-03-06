@@ -7,6 +7,10 @@ import SummaryApi from "../common/SummaryApi";
 import { AiTwotoneDelete } from "react-icons/ai";
 import { BiMessageSquareEdit } from "react-icons/bi";
 import EditCategory from "../components/Category/EditCategory.jsx";
+import ConfirmBox from "../components/Layout/ConfirmBox.jsx";
+import toast from "react-hot-toast";
+import AxiosToastError from "../utils/AxiosToastError.js";
+import { useSelector } from "react-redux";
 
 
 const CategoryPage = () => {
@@ -18,7 +22,13 @@ const CategoryPage = () => {
     name: "",
     image: ""
   })
+  const [openConfirmBoxDelete, setOpenConfirmBoxDelete] = useState(false)
+  const [deleteCategory, setDeleteCategory] = useState({
+    _id: ""
+  })
 
+  const allCategory = useSelector(state=> state.product.allCategory)
+  
   const fetchCategory = async () => {
     try {
       setLoading(true);
@@ -45,6 +55,23 @@ const CategoryPage = () => {
   const handleOpenUploadCategory = () => {
     setOpenUploadCategory(true);
   };
+
+  const handleDeleteCategory = async()=>{
+    try {
+      const res = await Axios({
+        ...SummaryApi.deleteCategory,
+        data: deleteCategory
+      })
+      const {data : resData}= res
+      if(resData.success){
+        toast.success(resData.msg)
+        fetchCategory()
+        setOpenConfirmBoxDelete(false)
+      }
+    } catch (error) {
+      AxiosToastError(error)
+    }
+  }
 
   return (
     <section>
@@ -80,7 +107,10 @@ const CategoryPage = () => {
               setOpenEdit(true)
               setEditData(category)
             }} className="flex-1"><BiMessageSquareEdit size={22}/></button>
-              <button className="flex-1"><AiTwotoneDelete size={24}/></button>
+              <button onClick={()=>{
+                setOpenConfirmBoxDelete(true)
+                setDeleteCategory(category)
+              }} className="flex-1"><AiTwotoneDelete size={24}/></button>
             </div>          
           </div>
           
@@ -95,6 +125,12 @@ const CategoryPage = () => {
         openEdit && (
           <EditCategory data={editData} close={()=>setOpenEdit(false)} fetchData={fetchCategory}/>
         )
+      }
+      {
+        openConfirmBoxDelete && (
+          <ConfirmBox close={()=> setOpenConfirmBoxDelete(false)} cancel={()=> setOpenConfirmBoxDelete(false)} confirm={handleDeleteCategory}/>
+        )
+        
       }
     </section>
   );
