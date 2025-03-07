@@ -14,6 +14,10 @@ import CategoryPage from '../pages/CategoryPage';
 import SubCategory from '../pages/SubCategory';
 import UploadProduct from '../components/Product/UploadProduct';
 import ProductAdmin from '../pages/ProductAdmin';
+import ProductList from '../pages/ProductList';
+import CheckoutPage from '../pages/CheckoutPage';
+import Success from '../components/Layout/Success';
+import Cancel from '../components/Layout/Cancel';
 
 const router = createBrowserRouter([
     {
@@ -77,6 +81,27 @@ const router = createBrowserRouter([
                         element: <ProductAdmin/>
                     }
                 ]
+            },
+            {
+                path : ":category",
+                children : [
+                    {
+                        path : ":subCategory",
+                        element : <ProductList/>
+                    }
+                ]
+            },
+            {
+                path : "checkout",
+                element : <CheckoutPage/>
+            },
+            {
+                path : "success",
+                element : <Success/>
+            },
+            {
+                path : 'cancel',
+                element : <Cancel/>
             }
         ]
     }

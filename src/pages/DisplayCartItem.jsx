@@ -1,20 +1,21 @@
 import React from "react";
-import { IoClose } from "react-icons/io5";
+import { CgCloseR } from "react-icons/cg";
 import { Link, useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../provider/GlobalProvider";
 import DisplayPriceInCLP from "../utils/displayPrice";
 import { FaCaretRight } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import AddToCartButton from "./AddCartBtn";
-import pricewithDiscount from "../utils/priceWithDiscount";
 import imageEmpty from "../assets/empty_cart.png";
 import toast from "react-hot-toast";
+import priceWithDiscount from "../utils/priceWithDiscount"
 
 const DisplayCartItem = ({ close }) => {
   const { notDiscountTotalPrice, totalPrice, totalQty } = useGlobalContext();
   const cartItem = useSelector((state) => state.cartItem.cart);
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
+  console.log("user details", user)
 
   const redirectToCheckoutPage = () => {
     if (user?._id) {
@@ -24,18 +25,18 @@ const DisplayCartItem = ({ close }) => {
       }
       return;
     }
-    toast("Debe iniciar sesión");
+    toast("Por favor inicie sesión");
   };
   return (
     <section className="bg-neutral-900 fixed top-0 bottom-0 right-0 left-0 bg-opacity-70 z-50">
       <div className="bg-white w-full max-w-sm min-h-screen max-h-screen ml-auto">
         <div className="flex items-center p-4 shadow-md gap-3 justify-between">
-          <h2 className="font-semibold">Cart</h2>
+          <h2 className="font-semibold">Carrito de compras</h2>
           <Link to={"/"} className="lg:hidden">
-            <IoClose size={25} />
+            <CgCloseR size={25} />
           </Link>
           <button onClick={close} className="hidden lg:block">
-            <IoClose size={25} />
+            <CgCloseR size={25} />
           </button>
         </div>
 
@@ -48,11 +49,11 @@ const DisplayCartItem = ({ close }) => {
                 <p>{DisplayPriceInCLP(notDiscountTotalPrice - totalPrice)}</p>
               </div>
               <div className="bg-white rounded-lg p-4 grid gap-5 overflow-auto">
-                {cartItem[0] &&
+                {cartItem[0] && ( 
                   cartItem.map((item) => {
                     return (
                       <div
-                        key={item?._id + "cartItemDisplay"}
+                        key={item?._id + "DisplayCartItem"}
                         className="flex  w-full gap-4"
                       >
                         <div className="w-16 h-16 min-h-16 min-w-16 bg-red-500 border rounded">
@@ -70,7 +71,7 @@ const DisplayCartItem = ({ close }) => {
                           </p>
                           <p className="font-semibold">
                             {DisplayPriceInCLP(
-                              pricewithDiscount(
+                              priceWithDiscount(
                                 item?.productId?.price,
                                 item?.productId?.discount
                               )
@@ -82,7 +83,7 @@ const DisplayCartItem = ({ close }) => {
                         </div>
                       </div>
                     );
-                  })}
+                  }))}
               </div>
               <div className="bg-white p-4">
                 <h3 className="font-semibold">Detalles de la compra</h3>
@@ -110,15 +111,15 @@ const DisplayCartItem = ({ close }) => {
               </div>
             </>
           ) : (
-            <div className="bg-white flex flex-col justify-center items-center">
+            <div className="bg-white flex flex-col justify-center items-center pb-6">
               <img
                 src={imageEmpty}
-                className="w-full h-full object-scale-down"
+                className="w-28 h-24 my-2 object-scale-down"
               />
               <Link
                 onClick={close}
                 to={"/"}
-                className="block bg-green-600 px-4 py-2 text-white rounded"
+                className="block bg-green-600 hover:bg-green-700 px-4 py-2 text-white rounded font-semibold"
               >
                 Compra ahora
               </Link>
