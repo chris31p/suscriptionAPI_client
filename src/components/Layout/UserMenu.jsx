@@ -17,6 +17,9 @@ const UserMenu = ({ close }) => {
 
   const handleLogout = async () => {
     try {
+      const accessToken = localStorage.getItem('accessToken');
+      console.log("Token antes de logout:", accessToken); // Verifica si hay token
+      
       const response = await Axios({
         ...SummaryApi.logout,
       });

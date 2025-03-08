@@ -102,7 +102,7 @@ const OtpVerificate = () => {
         </form>
 
         <p>
-          Ya tienes una cuenta?{" "}
+          ¿Ya tienes una cuenta?{" "}
           <Link to={"/login"} className="font-semibold italic text-sky-600">
             Iniciar sesión
           </Link>

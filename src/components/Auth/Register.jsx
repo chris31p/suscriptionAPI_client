@@ -68,7 +68,7 @@ const Register = () => {
   return (
     <section className="w-full container mx-auto px-2">
       <div className="bg-white my-4 w-full max-w-lg mx-auto rounded p-8">
-        <p className="text-center">Bienvenido a Healthy Food Market</p>
+        <p className="text-center">Bienvenido a GreenMarket</p>
         <form className="grid gap-4 mt-6" onSubmit={handleSubmit}>
           <div className="grid gap-1">
             <label htmlFor="name">Nombre: </label>
@@ -80,7 +80,7 @@ const Register = () => {
               name="name"
               value={data.name}
               onChange={handleChange}
-              placeholder="Ingrese su nombre"
+              placeholder="Ingresa tu nombre completo"
             />
           </div>
           <div className="grid gap-1">
@@ -93,7 +93,7 @@ const Register = () => {
               name="email"
               value={data.email}
               onChange={handleChange}
-              placeholder="Ingrese su email"
+              placeholder="Ingresa tu email"
             />
           </div>
           <div className="grid gap-1">
@@ -107,7 +107,7 @@ const Register = () => {
                 name="password"
                 value={data.password}
                 onChange={handleChange}
-                placeholder="Ingrese su contraseña"
+                placeholder="Ingresa tu contraseña"
               />
               <div
                 onClick={() => setShowPassword((preve) => !preve)}
@@ -128,7 +128,7 @@ const Register = () => {
                 name="confirmPassword"
                 value={data.confirmPassword}
                 onChange={handleChange}
-                placeholder="Ingrese nuevamente tu contraseña"
+                placeholder="Ingresa nuevamente tu contraseña"
               />
               <div
                 onClick={() => setShowConfirmPassword((preve) => !preve)}
@@ -145,14 +145,14 @@ const Register = () => {
               validatedValue ? "bg-green-600 hover:bg-green-500" : "bg-teal-800"
             } text-white py-2 rounded font-semibold my-3 tracking-wide`}
           >
-            Registrate
+            Registrarse
           </button>
         </form>
 
         <p className="text-center">
-          Ya tienes una cuenta ?{" "}
+          ¿Ya tienes una cuenta?{" "}
           <Link to={"/login"} className="font-semibold italic text-blue-400">
-            Login
+            Iniciar sesión
           </Link>
         </p>
       </div>

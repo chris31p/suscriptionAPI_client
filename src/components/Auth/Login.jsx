@@ -105,7 +105,7 @@ const Login = () => {
               to={"/forgot-password"}
               className="block ml-auto hover:text-primary-200"
             >
-              Olvidé la contraseña ?
+              ¿Olvidaste tu contraseña?
             </Link>
           </div>
 
@@ -120,9 +120,9 @@ const Login = () => {
         </form>
 
         <p>
-          No tienes una cuenta?{" "}
+          ¿No tienes una cuenta?{" "}
           <Link to={"/register"} className="font-semibold italic text-sky-600">
-            Registrarse
+            Regístrate
           </Link>
         </p>
       </div>

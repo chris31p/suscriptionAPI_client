@@ -96,7 +96,7 @@ const ResetPsw = () => {
                 name="newPassword"
                 value={data.newPassword}
                 onChange={handleChange}
-                placeholder="Ingrese la nueva contraseña"
+                placeholder="Ingresa la nueva contraseña"
               />
               <div
                 onClick={() => setShowPassword((preve) => !preve)}
@@ -108,7 +108,7 @@ const ResetPsw = () => {
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="confirmPassword">Vuelve a escribir la contraseña: </label>
+            <label htmlFor="confirmPassword">Vuelva a escribir la contraseña: </label>
             <div className="bg-blue-50 p-2 border rounded flex items-center focus-within:border-primary-200">
               <input
                 type={showConfirmPassword ? "text" : "password"}
@@ -139,7 +139,7 @@ const ResetPsw = () => {
         </form>
 
         <p>
-          Ya tiene una cuenta?{" "}
+          ¿Ya tiene una cuenta?{" "}
           <Link
             to={"/login"}
             className="font-semibold italic text-sky-600"
