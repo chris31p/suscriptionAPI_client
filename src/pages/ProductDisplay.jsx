@@ -112,7 +112,7 @@ const ProductDisplay = () => {
                     <p className='text-base'>{data.unit}</p>
                 </div>
                 {
-                  data?.more_details && Object.keys(data?.more_details).map((element,index)=>{
+                  data?.more_details && Object.keys(data?.more_details).map((element)=>{
                     return(
                       <div>
                           <p className='font-semibold'>{element}</p>
@@ -211,7 +211,7 @@ const ProductDisplay = () => {
                     <p className='text-base'>{data.unit}</p>
                 </div>
                 {
-                  data?.more_details && Object.keys(data?.more_details).map((element,index)=>{
+                  data?.more_details && Object.keys(data?.more_details).map((element)=>{
                     return(
                       <div>
                           <p className='font-semibold'>{element}</p>

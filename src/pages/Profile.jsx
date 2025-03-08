@@ -64,11 +64,11 @@ const Profile = () => {
 
   return (
     <div className="p-4">
-      <div className="w-16 h-16 flex items-center rounded-full overflow-hidden drop-shadow-md">
+      <div className="w-20 h-20 flex items-center rounded-full overflow-hidden drop-shadow-md">
         {user.avatar ? (
           <img src={user.avatar} alt={user.name} className="w-full h-full" />
         ) : (
-          <ImUser size={30} />
+          <ImUser size={38}/>
         )}
       </div>
       <button className="text-sm min-w-16 border border-blue-400 hover:border-secondary-200 px-2 py-1 rounded-full mt-3">
