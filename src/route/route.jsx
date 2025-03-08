@@ -18,6 +18,7 @@ import ProductList from '../pages/ProductList';
 import CheckoutPage from '../pages/CheckoutPage';
 import Success from '../components/Layout/Success';
 import Cancel from '../components/Layout/Cancel';
+import ProductDisplay from '../pages/ProductDisplay';
 
 const router = createBrowserRouter([
     {
@@ -90,6 +91,10 @@ const router = createBrowserRouter([
                         element : <ProductList/>
                     }
                 ]
+            },
+            {
+                path: "product/:product",
+                element: <ProductDisplay/>
             },
             {
                 path : "checkout",

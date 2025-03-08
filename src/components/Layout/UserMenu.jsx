@@ -89,7 +89,7 @@ const UserMenu = ({ close }) => {
             to={"/dashboard/upload-product"}
             className="px-2 hover:bg-green-200 py-1"
           >
-            Cargar Producto
+            Agregar Producto
           </Link>
         )}
 
@@ -116,7 +116,7 @@ const UserMenu = ({ close }) => {
           to={"/dashboard/address"}
           className="px-2 hover:bg-green-100 py-1"
         >
-          Guardar dirección
+          Mi dirección
         </Link>
 
         <button

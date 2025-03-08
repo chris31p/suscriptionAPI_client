@@ -13,27 +13,29 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleRedirectProductListpage = (id, cat) => {
-    if (!id || id.length !== 24) {
+    if (!id || id.length !== 30) {
       console.error("Error: categoryId no válido", id);
       return;
     }
   
-    const SubCategory = SubCategoryData.find((sub) => {
+    const subcategory = SubCategoryData.find((sub) => {
       return sub.category.some((c) => c._id === id);
     });
   
-    if (!SubCategory) {
+    if (!subcategory) {
       console.error("Error: No se encontró la subcategoría");
       return;
     }
   
-    const url = `/${valideURLConvert(cat)}-${id}/${valideURLConvert(SubCategory.name)}-${SubCategory._id}`;
+    const url = `/${valideURLConvert(cat)}-${id}/${valideURLConvert(subcategory.name)}-${subcategory._id}`;
+    //const url = `${cat}-${id}/${subcategory.name}-${subcategory._id}`
     navigate(url);
   };
   
 
   return (
     <section className="bg-white p-2 mt-2">
+      {/***banner*/}
       <div className="container mx-auto my-4 px-4 bg-green-700 rounded-lg opacity-95">
         <div
           className={`w-96 h-auto min-h-48 place-self-center border border-lime-500 ${
@@ -53,9 +55,19 @@ const Home = () => {
         </div>
       </div>
 
+      {/*** Sobre Nosotros */}
+      <div className="text-center my-6">
+        <h2 className="text-3xl font-bold text-gray-800">Sobre nosotros</h2>
+        <p className="text-gray-600 max-w-2xl mx-auto mt-2">
+          Nuestra aplicación nació con la idea de ofrecer productos frescos y de calidad,
+          conectando a productores locales con consumidores conscientes.
+        </p>
+      </div>
+
+
       <div className="container mx-auto px-4 my-2 grid grid-cols-5 md:grid-cols-5 lg:grid-cols-7 gap-2">
         {loadingCategory
-          ? new Array(12).fill(null).map((c, index) => {
+          ? ( new Array(12).fill(null).map((c, index) => {
               return (
                 <div
                   key={index + "loadingcategory"}
@@ -64,9 +76,10 @@ const Home = () => {
                   <div className="bg-blue-100 min-h-24 rounded"></div>
                   <div className="bg-blue-100 h-8 rounded"></div>
                 </div>
-              );
+              )
             })
-          : categoryData.map((cat) => {
+          ):( 
+             categoryData.map((cat) => {
               return (
                 <div
                   key={cat._id + "displayCategory"}
@@ -83,7 +96,7 @@ const Home = () => {
                   </div>
                 </div>
               );
-            })}
+            }))}
       </div>
 
       {/***display category product */}

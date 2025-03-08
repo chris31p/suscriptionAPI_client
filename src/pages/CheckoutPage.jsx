@@ -18,6 +18,7 @@ const CheckoutPage = () => {
     fetchCartItem,
     fetchOrder,
   } = useGlobalContext();
+  
   const [openAddress, setOpenAddress] = useState(false);
   const addressList = useSelector((state) => state.addresses.addressList);
   const [selectAddress, setSelectAddress] = useState(0);
@@ -59,11 +60,11 @@ const CheckoutPage = () => {
 
   const handleOnlinePayment = async () => {
     try {
-      toast.loading("Loading...");
+      toast.loading("Procesando...");
       const stripePublicKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
       const stripePromise = await loadStripe(stripePublicKey);
 
-      const response = await Axios({
+      const res = await Axios({
         ...SummaryApi.payment_url,
         data: {
           list_items: cartItemsList,
@@ -73,7 +74,7 @@ const CheckoutPage = () => {
         },
       });
 
-      const { data: responseData } = response;
+      const { data: responseData } = res;
 
       stripePromise.redirectToCheckout({ sessionId: responseData.id });
 

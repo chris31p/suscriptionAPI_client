@@ -119,10 +119,10 @@ export const GlobalProvider = ({ children }) => {
   };
   const fetchOrder = async () => {
     try {
-      const response = await Axios({
+      const res = await Axios({
         ...SummaryApi.getOrderItems,
       });
-      const { data: responseData } = response;
+      const { data: responseData } = res;
 
       if (responseData.success) {
         dispatch(setOrder(responseData.data));

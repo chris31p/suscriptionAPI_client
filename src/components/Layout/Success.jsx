@@ -7,7 +7,7 @@ const Success = () => {
   return (
     <div className="m-16 w-full max-w-md bg-green-200 p-4 py-5 rounded-lg mx-auto flex flex-col justify-center items-center gap-5">
       <p className="text-green-800 font-bold text-lg text-center">
-        {location?.state?.text ? location?.state?.text : "Payment"} Exitosa!
+        {location?.state?.text ? location?.state?.text : "Pago"} realizado con éxito!
       </p>
       <Link
         to="/"

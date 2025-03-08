@@ -9,7 +9,7 @@ import {setUserDetails} from './store/userSlice.js';
 import { useDispatch } from "react-redux";
 import SummaryApi from "./common/SummaryApi.js";
 import Axios from "./utils/Axios.js";
-import {setAllCategory, setAllSubCategory} from './store/productSlice.js'
+import {setAllCategory, setAllSubCategory, setLoadingCategory} from './store/productSlice.js'
 import { GlobalProvider } from "./provider/GlobalProvider.jsx";
 
 function App() {
@@ -21,30 +21,30 @@ function App() {
     dispatch(setUserDetails(userData.data))
   }
 
-  const fetchCategory = async () => {
+  const fetchCategory = async()=>{
     try {
-      const response = await Axios({
-        ...SummaryApi.getCategory,
-      });
-      const { data: respData } = response;
+        dispatch(setLoadingCategory(true))
+        const res = await Axios({
+            ...SummaryApi.getCategory
+        })
+        const { data : resData } = res
 
-      if (respData.success) {
-        dispatch(setAllCategory(respData.data))
-        //setDataCategory(respData.data);
-      }
+        if(resData.success){
+           dispatch(setAllCategory(resData.data.sort((a, b) => a.name.localeCompare(b.name)))) 
+        }
     } catch (error) {
-      return error;
-    } finally {
-      //
+        return error 
+    }finally{
+      dispatch(setLoadingCategory(false))
     }
   };
 
   const fetchSubCategory = async()=>{
     try {
-        const response = await Axios({
+        const res = await Axios({
             ...SummaryApi.getSubCategory
         })
-        const { data : resData } = response
+        const { data : resData } = res
 
         if(resData.success){
            dispatch(setAllSubCategory(resData.data.sort((a, b) => a.name.localeCompare(b.name)))) 

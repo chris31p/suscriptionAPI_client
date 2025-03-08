@@ -64,7 +64,7 @@ const AddToCartButton = ({ data }) => {
     const response = await updateCartItem(cartItemDetails?._id, qty + 1);
 
     if (response.success) {
-      toast.success("Item added");
+      toast.success("Item agregado");
     }
   };
 
@@ -77,7 +77,7 @@ const AddToCartButton = ({ data }) => {
       const response = await updateCartItem(cartItemDetails?._id, qty - 1);
 
       if (response.success) {
-        toast.success("Item remove");
+        toast.success("Item eliminado");
       }
     }
   };
@@ -108,7 +108,7 @@ const AddToCartButton = ({ data }) => {
           onClick={handleADDTocart}
           className="bg-green-600 hover:bg-green-700 text-white px-2 lg:px-4 py-1 rounded"
         >
-          {loading ? <Loading /> : "Add"}
+          {loading ? <Loading /> : "Comprar"}
         </button>
       )}
     </div>
