@@ -11,6 +11,13 @@ Este repositorio contiene el **frontend** de GreenMarket 🥦, que ha sido desar
 
 ---
 
+# Despliegue en Netlify
+
+**Link de la aplicación:**
+[(https://apigreenmarket.netlify.app/)](https://apigreenmarket.netlify.app/)
+
+---
+
 ## 🚀 **Tecnologías Implementadas**
 - **⚛️ React** - Framework para el desarrollo de interfaces de usuario.
 - **⚡ Vite** - Herramienta de construcción rápida para React.
