@@ -14,7 +14,7 @@ Este repositorio contiene el **frontend** de GreenMarket 🥦, que ha sido desar
 # Despliegue en Netlify
 
 **Link de la aplicación:**
-apigreenmarket.netlify.app
+[(https://apigreenmarket.netlify.app/)](https://apigreenmarket.netlify.app/)
 
 ---
 
