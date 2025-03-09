@@ -1,4 +1,6 @@
-export const baseURL = "http://localhost:4000"
+export const baseURL = import.meta.env.MODE === "development" 
+  ? import.meta.env.VITE_BACKEND_URL_DEV 
+  : import.meta.env.VITE_BACKEND_URL_PROD;
 
 const SummaryApi = {
     register: {
